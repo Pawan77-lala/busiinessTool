@@ -1,0 +1,61 @@
+{
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiv1iK8hhmgtPurHSMwmPQkRLWATYAit8CeQKQvpIjhRvYjmyZFyiyhRZ9PAmdezj7WS2nOtSR2ALpixSpJFqbSdLKjKwjUOV7XotA402xPDnQYGRNt/ghL0zO6VMEzURQBkz7DLBFoUW97Ra/5vP/FsuKNhJMDctG1hOXQ4jz0o3+/Z5dQ7tQwmGkH/7WITQZluKCYCAXMUoPpLfbQKw5QUvkGyy7J5kHSQBNKBpxZhQcS2B46gI66Znpy6vtWJStbo9D3yi3mtoraXmC5KvVDJwhLR5kH/2queopNn4JwBGoI6KHKR3yZYbhFg0sZ4VMaMTieGMRxKIrPBPNTsk6QIDAQAB",
+  "name": "Business Tools",
+  "version": "1.2.0",
+  "manifest_version": 2,
+  "description": "__MSG_appDesc__",
+  "homepage_url": "https://soletstalkapp.com",
+  "default_locale": "en",
+  "icons": {
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "background": {
+    "scripts": ["/worker.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": "images/icon-128.png",
+    "default_title": "Business Tools"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "unlimitedStorage",
+    "notifications",
+    "*://web.whatsapp.com/*",
+    "*://soletstalkapp.com/*",
+    "*://*.web.app/*",
+    "*://*.firebaseio.com/*",
+    "*://*.firebaseapp.com/*",
+    "*://*.cloudfunctions.net/*",
+    "*://*.zapier.com/*",
+    "*://*.pabbly.com/*",
+    "*://*.integrately.com/*",
+    "*://*.integromat.com/*",
+    "*://apiway.ai/*",
+    "*://*.konnectzit.com/*",
+    "*://*.knzt.it/*",
+    "*://api.antsandapps.com/*",
+    "*://res.cloudinary.com/*"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "*://soletstalkapp.com/*"
+    ]
+  },
+  "content_security_policy":"script-src 'self' 'unsafe-eval' https://apiway.ai https://*.firebaseio.com https://*.googleapis.com https://www.gstatic.com; object-src 'self';",
+  "web_accessible_resources" : ["/*"],
+  "content_scripts": [
+    {
+      "run_at": "document_end",
+      "matches": [
+        "*://web.whatsapp.com/*"
+      ],
+      "js": [
+        "/bundle.js"
+      ]
+    }
+  ]
+}
